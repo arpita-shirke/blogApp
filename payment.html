@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block 'main' %}
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 50px; background-color: white; width: 500px;">
+    <h2>Pay ${{ price_display }}</h2>
+    <form action="/payment_success/" method="POST">
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ razorpay_key_id }}"
+            data-amount="{{ payment.amount }}"
+            data-currency="INR"
+            data-order_id="{{ payment.id }}"
+            data-buttontext="Pay With Razorpay"
+            data-name="Myblog"
+            data-description="Subscription Payment"
+            data-theme.color="#c98265"
+            data-callback_url="/payment_success/"
+        ></script>
+        <input type="hidden" custom="Hidden Element" name="hidden">
+    </form>
+</div>
+
+{% endblock %}

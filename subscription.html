@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block 'main' %}
+    <h1 style="text-align:center;">Choose a Subscription Plan</h1>
+    <div class="container">
+        {% for plan in plans %}
+        <div class="card">
+            <h2>{{ plan.name }}</h2>
+            <h3>${{ plan.price }}<br><small>monthly</small></h3>
+            <ul>
+                {% for feature, available in plan.features.items %}
+                <li class="{{ available|yesno:'true,false' }}">{{ feature }}</li>
+                {% endfor %}
+            </ul>
+            <a href="/payment_page?price={{ plan.price }}" class="button">Select And Pay</a>
+
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

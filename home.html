@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Post</title>
+    <style>
+        .form-control {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Create a New Post</h2>
+    <form  method="post" action="/home">
+        {% csrf_token %}
+        <label for="title">Post Title:</label><br>
+        <input type="text" name="title" id="title" class="form-control" required><br>
+
+        <label for="content">Content:</label><br>
+        <textarea name="content" id="content" class="form-control" rows="6" required></textarea><br>
+
+        <label for="username">Author:</label>
+        <input type="text" name="Author" required><br><br>
+
+        <label for="created_at">Created At:</label><br>
+        <input type="date" name="created_at" id="created_at" class="form-control" required><br>
+
+        <label for="updated_at">Updated At:</label><br>
+        <input type="date" name="updated_at" id="updated_at" class="form-control" required><br>
+        <button type="submit" class="btn" value="Add">Create Post</button>
+    </form>
+</body>
+</html>

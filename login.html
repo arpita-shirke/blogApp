@@ -1,0 +1,123 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background:rgb(126, 183, 77);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color:white;
+    }
+
+    .signup-box {
+        background-color:rgb(100, 149, 58);
+        {% comment %} padding: 40px 50px; {% endcomment %}
+        border-radius: 10px;
+        width: 30%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .signup-box h1 {
+        color: white;
+        margin-bottom: 20px;
+        font-size: 28px;
+        font-weight:bold;
+        font-size: 50px;
+    }
+
+    .signup-box input[type="text"],
+    .signup-box input[type="email"],
+    .signup-box input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        color: white;
+        font-size: 14px;
+    }
+
+    .checkbox-container input {
+        margin-right: 8px;
+    }
+
+    .signup-box input[type="submit"] {
+        background-color:rgb(126, 183, 77);
+        color: white;
+        padding: 12px;
+        border: none;
+        width: 100%;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .signup-box button:hover {
+        background-color: #5fc45f;
+    }
+</style>
+</head>
+<body>
+  <div class="signup-box">
+    <h1>Login</h1>
+    <div class="container">
+        <div class="row">
+               
+                {% if errmsg %}
+                  <div class="alert alert-danger">
+                      {{errmsg}}
+                  </div>
+                {% endif %}
+                <form method="POST" action="/login">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="Input1" class="form-label">Username</label>
+                        <input type="email" class="form-control" id="Input1" placeholder="Enter Username" name="uname">
+                      </div>
+                      <div class="mb-3">
+                        <label for="Input2" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="Input2" placeholder="Enter Password" name="upass">
+                      </div>
+                      <div class="mb-3 row">
+                        <label>
+                          <input type="checkbox" name="published">I Agree To The Terms & Conditions
+                      </label><br>                    <div class="col-sm-10">
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                       <input type="submit" class="btn " value="Login"><br><br>
+                       Don't have an Account?<a href="/register" style="text-decoration: none;">Sign Up</a><br>
+                       Go to HOME page<a href="/home" style="text-decoration: none;">HOME!</a>
+                      
+                      </div>
+                      </form>
+                    </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
